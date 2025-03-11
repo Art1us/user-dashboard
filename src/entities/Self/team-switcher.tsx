@@ -8,8 +8,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from "@/shared/components/ui/dropdown-menu";
-import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from "@/shared/components/ui/sidebar";
+} from "@/shared/ui/dropdown-menu";
+import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from "@/shared/ui/sidebar";
 
 export function TeamSwitcher({
   teams,

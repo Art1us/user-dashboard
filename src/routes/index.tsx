@@ -1,16 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { type ColumnDef } from "@tanstack/react-table";
 import { useQuery } from "@tanstack/react-query";
-import { Button } from "@/shared/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/shared/components/ui/dropdown-menu";
+import { Button } from "@/shared/ui/button";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/shared/ui/dropdown-menu";
 import { MoreHorizontal } from "lucide-react";
 import { useEffect } from "react";
-import { Main } from "@/shared/components/layout/main";
+import { Main } from "@/shared/ui/main";
 import { UserDashboardTable } from "@/widgets/UserDashboard";
 import { useUserStore, type TUser } from "@/entities/User/model/userStore";
 import { AppHeader } from "@/widgets/AppHeader";

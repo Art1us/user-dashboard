@@ -10,9 +10,9 @@ import {
   getSortedRowModel,
   type SortingState,
 } from "@tanstack/react-table";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/shared/components/ui/table";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/shared/ui/table";
 import { useState } from "react";
-import { Input } from "../../../shared/components/ui/input";
+import { Input } from "@/shared/ui/input";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];

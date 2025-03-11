@@ -1,6 +1,6 @@
 import { Link, useLocation } from "@tanstack/react-router";
 import { ChevronRight } from "lucide-react";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/shared/components/ui/collapsible";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/shared/ui/collapsible";
 import {
   SidebarGroup,
   SidebarGroupLabel,
@@ -11,8 +11,8 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
   useSidebar,
-} from "@/shared/components/ui/sidebar";
-import { Badge } from "../ui/badge";
+} from "@/shared/ui/sidebar";
+import { Badge } from "@/shared/ui/badge";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -20,7 +20,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
+} from "@/shared/ui/dropdown-menu";
 import type { ReactNode } from "react";
 import { type LinkProps } from "@tanstack/react-router";
 

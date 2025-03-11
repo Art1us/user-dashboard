@@ -1,13 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { IconMenu } from "@tabler/icons-react";
 import { cn } from "@/shared/lib/utils";
-import { Button } from "@/shared/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/shared/components/ui/dropdown-menu";
+import { Button } from "@/shared/ui/button";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/shared/ui/dropdown-menu";
 
 interface TopNavProps extends React.HTMLAttributes<HTMLElement> {
   links: {
