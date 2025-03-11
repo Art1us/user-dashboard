@@ -1,8 +1,8 @@
 import { IconLayoutDashboard } from "@tabler/icons-react";
 import { AudioWaveform, Command, GalleryVerticalEnd } from "lucide-react";
-import { type SidebarData } from "../types";
+import type { SidebarData } from "../model/types";
 
-export const sidebarData: SidebarData = {
+export const mockSidebarData: SidebarData = {
   user: {
     name: "Artur Pazyniuk",
     email: "artur.pazyniuk.dev@gmail.com",

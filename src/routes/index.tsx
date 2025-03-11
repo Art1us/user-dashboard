@@ -13,7 +13,7 @@ import { useEffect } from "react";
 import { Main } from "@/shared/components/layout/main";
 import { UserDashboardTable } from "@/widgets/UserDashboard";
 import { useUserStore, type TUser } from "@/entities/User/model/userStore";
-import { Header } from "@/widgets/Header";
+import { AppHeader } from "@/widgets/AppHeader";
 
 export const columns: (cb: (id: string) => void) => ColumnDef<TUser>[] = (handleDelete) => [
   {
@@ -95,7 +95,7 @@ function App() {
 
   return (
     <div>
-      <Header />
+      <AppHeader />
       <Main>
         <div className="mb-2 flex items-center justify-between space-y-2">
           <h1 className="text-2xl font-bold tracking-tight">User Management Dashboard</h1>

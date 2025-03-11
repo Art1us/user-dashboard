@@ -1,8 +1,7 @@
 import { Outlet, createRootRoute } from "@tanstack/react-router";
-
 import { cn } from "@/shared/lib/utils";
 import { SidebarProvider } from "@/shared/components/ui/sidebar";
-import { AppSidebar } from "@/shared/components/layout/app-sidebar";
+import { AppSidebar } from "@/widgets/AppSidebar";
 
 export const Route = createRootRoute({
   component: () => (
