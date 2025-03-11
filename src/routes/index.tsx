@@ -2,18 +2,20 @@ import { createFileRoute } from "@tanstack/react-router";
 import { DataTable } from "@/components/DataTable";
 import { type ColumnDef } from "@tanstack/react-table";
 import { useQuery } from "@tanstack/react-query";
-
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { MoreHorizontal } from "lucide-react";
 import { useEffect } from "react";
 import { useUserStore, type TUser } from "@/components/userStore";
+import { Header } from "@/components/layout/header";
+import { TopNav } from "@/components/layout/top-nav";
+import { ProfileDropdown } from "@/components/profile-dropdown";
+import { Main } from "@/components/layout/main";
 
 export const columns: (cb: (id: string) => void) => ColumnDef<TUser>[] = (handleDelete) => [
   {
@@ -77,7 +79,23 @@ function App() {
 
   return (
     <div>
-      <DataTable columns={columns(deleteUser)} data={users} />
+      <Header>
+        <TopNav links={[]} />
+        <div className="ml-auto flex items-center space-x-4">
+          <ProfileDropdown />
+        </div>
+      </Header>
+
+      <Main>
+        <div className="mb-2 flex items-center justify-between space-y-2">
+          <h1 className="text-2xl font-bold tracking-tight">User Management Dashboard</h1>
+          <div className="flex items-center space-x-2">
+            <Button>Download</Button>
+          </div>
+        </div>
+
+        <DataTable columns={columns(deleteUser)} data={users} />
+      </Main>
     </div>
   );
 }

@@ -46,7 +46,7 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
           type="text"
           value={filtering}
           onChange={(e) => setFiltering(e.target.value)}
-          placeholder="Search..."
+          placeholder="Search by name or email..."
           className="max-w-sm"
         />
       </div>

@@ -25,7 +25,7 @@ export const Route = createRootRoute({
           <Outlet />
         </div>
       </SidebarProvider>
-      <TanStackRouterDevtools />
+      {/* <TanStackRouterDevtools /> */}
     </>
   ),
 });
