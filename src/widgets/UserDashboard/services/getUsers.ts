@@ -6,7 +6,12 @@ const ResponseSchema = z.array(UserSchema);
 
 export async function getUsers() {
   const response = await api.get("/users");
-  const data = ResponseSchema.parse(response.data);
+  const result = ResponseSchema.safeParse(response.data);
 
-  return data;
+  if (result.error) {
+    console.log(result.error);
+    throw new Error("Wrong Api Response");
+  }
+
+  return result.data;
 }

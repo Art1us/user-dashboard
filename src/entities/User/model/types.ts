@@ -1,10 +1,10 @@
 import { z } from "zod";
 
 export const UserSchema = z.object({
-  id: z.string(),
+  id: z.number(),
   name: z.string(),
   email: z.string().email(),
-  companyName: z.object({
+  company: z.object({
     name: z.string(),
   }),
   address: z.object({

@@ -1,7 +1,7 @@
-import { ProfileDropdown } from "@/entities/Self/profile-dropdown";
+import { ProfileDropdown } from "@/entities/Self";
 import { Header } from "@/shared/ui/header";
 import { mockLinks } from "../const/mock";
-import { TopNav } from "./top-nav";
+import { TopNav } from "./TopNav";
 
 export function AppHeader() {
   return (

@@ -4,7 +4,7 @@ import { DropdownMenu, DropdownMenuTrigger } from "@/shared/ui/dropdown-menu";
 import { DropdownMenuContent, DropdownMenuItem } from "@radix-ui/react-dropdown-menu";
 import { MoreHorizontal } from "lucide-react";
 
-export function DeleteUser({ userId }: { userId: string }) {
+export function DeleteUser({ userId }: { userId: number }) {
   const { deleteUser } = useUserStore();
 
   return (
