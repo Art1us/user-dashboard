@@ -1,4 +1,4 @@
-import { IconChecklist, IconLayoutDashboard } from "@tabler/icons-react";
+import { IconLayoutDashboard } from "@tabler/icons-react";
 import { AudioWaveform, Command, GalleryVerticalEnd } from "lucide-react";
 import { type SidebarData } from "../types";
 

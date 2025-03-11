@@ -73,6 +73,24 @@ function App() {
     if (data) setUsers(data);
   }, [data]);
 
+  const convertJsonToCsv = (jsonData: any) => {
+    const header = Object.keys(jsonData[0]);
+    const rows = jsonData.map((item: any) =>
+      header.map((fieldName) => JSON.stringify(item[fieldName], (_, value) => (value === null ? "" : value))).join(",")
+    );
+    return [header.join(","), ...rows].join("\n");
+  };
+
+  // Function to trigger download of CSV file
+  const downloadJsonToCsv = () => {
+    const csv = convertJsonToCsv(users);
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "data.csv";
+    link.click();
+  };
+
   if (isPending) return "Loading...";
 
   if (error) return "An error has occurred: " + error.message;
@@ -80,7 +98,13 @@ function App() {
   return (
     <div>
       <Header>
-        <TopNav links={[]} />
+        <TopNav
+          links={[
+            { title: "First", isActive: true, href: "/" },
+            { title: "Second", isActive: false, href: "/" },
+            { title: "Third", isActive: false, href: "/" },
+          ]}
+        />
         <div className="ml-auto flex items-center space-x-4">
           <ProfileDropdown />
         </div>
@@ -90,7 +114,7 @@ function App() {
         <div className="mb-2 flex items-center justify-between space-y-2">
           <h1 className="text-2xl font-bold tracking-tight">User Management Dashboard</h1>
           <div className="flex items-center space-x-2">
-            <Button>Download</Button>
+            <Button onClick={() => downloadJsonToCsv()}>Download</Button>
           </div>
         </div>
 
