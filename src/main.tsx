@@ -8,7 +8,6 @@ import { routeTree } from "./routeTree.gen";
 import "./styles.css";
 import reportWebVitals from "./reportWebVitals.ts";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { SidebarProvider } from "./components/ui/sidebar.tsx";
 
 // Create a new router instance
 const router = createRouter({
@@ -35,9 +34,7 @@ if (rootElement && !rootElement.innerHTML) {
   root.render(
     <StrictMode>
       <QueryClientProvider client={queryClient}>
-        <SidebarProvider defaultOpen={true}>
-          <RouterProvider router={router} />
-        </SidebarProvider>
+        <RouterProvider router={router} />
       </QueryClientProvider>
     </StrictMode>
   );
