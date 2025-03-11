@@ -1,3 +1,3 @@
-export { TeamSwitcher } from "./team-switcher";
-export { NavUser } from "./nav-user";
-export { ProfileDropdown } from "./profile-dropdown";
+export { TeamSwitcher } from "./ui/TeamSwitcher";
+export { NavUser } from "./ui/NavUser";
+export { ProfileDropdown } from "./ui/ProfileDropdown";
