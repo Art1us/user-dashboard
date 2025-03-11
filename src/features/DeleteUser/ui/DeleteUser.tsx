@@ -1,8 +1,7 @@
 import { useUserStore } from "@/entities/User";
 import { Button } from "@/shared/ui/button";
-import { DropdownMenu, DropdownMenuTrigger } from "@/shared/ui/dropdown-menu";
-import { DropdownMenuContent, DropdownMenuItem } from "@radix-ui/react-dropdown-menu";
 import { MoreHorizontal } from "lucide-react";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/shared/ui/dropdown-menu";
 
 export function DeleteUser({ userId }: { userId: number }) {
   const { deleteUser } = useUserStore();
