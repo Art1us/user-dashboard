@@ -1,88 +1,53 @@
-"use client";
+import { useEffect } from "react";
+import { UserTable } from "./UserTable";
+import { useUserStore, type TUser } from "@/entities/User";
+import { useQuery } from "@tanstack/react-query";
+import type { ColumnDef } from "@tanstack/table-core";
+import { DeleteUser } from "@/features/DeleteUser";
 
-import {
-  type ColumnDef,
-  flexRender,
-  useReactTable,
-  getCoreRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  type SortingState,
-} from "@tanstack/react-table";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/shared/ui/table";
-import { useState } from "react";
-import { Input } from "@/shared/ui/input";
-
-interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[];
-  data: TData[];
-}
-
-export function UserDashboardTable<TData, TValue>({ columns, data }: DataTableProps<TData, TValue>) {
-  const [sorting, setSorting] = useState<SortingState>([]);
-  const [filtering, setFiltering] = useState("");
-
-  const table = useReactTable({
-    data,
-    columns,
-    onSortingChange: setSorting,
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    onGlobalFilterChange: setFiltering,
-    state: {
-      sorting,
-      globalFilter: filtering,
+export const columns: ColumnDef<TUser>[] = [
+  {
+    accessorKey: "name",
+    header: "Name",
+  },
+  {
+    accessorKey: "email",
+    header: "Email",
+  },
+  {
+    accessorKey: "company.name",
+    header: "Company",
+    enableGlobalFilter: false,
+  },
+  {
+    accessorKey: "address.city",
+    header: "City",
+    enableGlobalFilter: false,
+  },
+  {
+    id: "actions",
+    header: "Actions",
+    cell: ({ row }) => {
+      return <DeleteUser userId={row.original.id} />;
     },
+  },
+];
+
+export function UserDashboardTable() {
+  const { users, setUsers } = useUserStore();
+
+  const { isPending, error, data } = useQuery({
+    queryKey: ["usersData"],
+    queryFn: () => fetch("https://jsonplaceholder.typicode.com/users").then((res) => res.json()),
   });
 
-  return (
-    <>
-      <div className="flex items-center py-4">
-        <Input
-          type="text"
-          value={filtering}
-          onChange={(e) => setFiltering(e.target.value)}
-          placeholder="Search by name or email..."
-          className="max-w-sm"
-        />
-      </div>
-      <div className="rounded-md border">
-        <Table>
-          <TableHeader>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => {
-                  return (
-                    <TableHead key={header.id}>
-                      {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
-                    </TableHead>
-                  );
-                })}
-              </TableRow>
-            ))}
-          </TableHeader>
-          <TableBody>
-            {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
-                <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
-                  ))}
-                </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell colSpan={columns.length} className="h-24 text-center">
-                  No results.
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
-      </div>
-    </>
-  );
+  useEffect(() => {
+    if (data) setUsers(data);
+  }, [data]);
+
+  if (isPending) return "Loading...";
+
+  if (error) return "An error has occurred: " + error.message;
+
+  return <UserTable columns={columns} data={users} />;
 }
