@@ -36,6 +36,7 @@ export const columns: (cb: (id: string) => void) => ColumnDef<TUser>[] = (handle
   },
   {
     id: "actions",
+    header: "Actions",
     cell: ({ row }) => {
       return (
         <DropdownMenu>
@@ -46,7 +47,6 @@ export const columns: (cb: (id: string) => void) => ColumnDef<TUser>[] = (handle
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem onClick={() => handleDelete(row.original.id)}>Delete</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
