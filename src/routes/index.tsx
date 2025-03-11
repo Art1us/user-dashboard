@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { DataTable } from "@/shared/components/DataTable";
 import { type ColumnDef } from "@tanstack/react-table";
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "@/shared/components/ui/button";
@@ -11,11 +10,12 @@ import {
 } from "@/shared/components/ui/dropdown-menu";
 import { MoreHorizontal } from "lucide-react";
 import { useEffect } from "react";
-import { useUserStore, type TUser } from "@/shared/components/userStore";
 import { Header } from "@/shared/components/layout/header";
 import { TopNav } from "@/shared/components/layout/top-nav";
 import { ProfileDropdown } from "@/shared/components/profile-dropdown";
 import { Main } from "@/shared/components/layout/main";
+import { UserDashboardTable } from "@/widgets/UserDashboard";
+import { useUserStore, type TUser } from "@/entities/User/userStore";
 
 export const columns: (cb: (id: string) => void) => ColumnDef<TUser>[] = (handleDelete) => [
   {
@@ -118,7 +118,7 @@ function App() {
           </div>
         </div>
 
-        <DataTable columns={columns(deleteUser)} data={users} />
+        <UserDashboardTable columns={columns(deleteUser)} data={users} />
       </Main>
     </div>
   );
